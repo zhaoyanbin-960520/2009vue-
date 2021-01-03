@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .red{
+            color:red;
+        }
+        .blue{
+            color:blue;
+        }
+    </style>
+
+</head>
+<body>
+<div id="app">
+    <com color="red"></com>
+    <com color="blue"></com>
+
+</div>
+
+<script src="js/vue.min.js"></script>
+<script>
+    //定义组件
+    let com={
+        template:`<div :class="color">这是我的第一个123组件</div>`,
+        props:['color','color2'],
+        //created:function(){
+            //console.log(this.user)
+        //},
+    }
+
+
+    new Vue({
+        el: "#app",
+        data: {},
+        components:{
+            com:com,
+        }
+    })
+</script>
+
+</body>
+</html>

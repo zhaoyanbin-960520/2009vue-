@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="app">
+    <span id="span" @click="number">{{count}}</span>
+
+</div>
+
+<script src="js/vue.min.js"></script>
+<script>
+    //创建了一个vue对象  初始化   运行   销毁
+    new Vue({
+        el: "#app",
+        data: {
+            count:40
+        },
+        methods:{
+            number(){
+                this.count--;
+            },
+        },
+        //vue生命周期第一个钩子函数  完成绑定 初始化
+        //没有el data  method等属性
+        beforeCreate:function(){
+            //console.log('beforeCreate:'+this.count);
+        },
+        //vue生命周期第二个钩子函数 该函数已经初始化el data  method等属性
+        created:function (){
+            //console.log('created:'+this.count);
+        },
+        //vue生命周期第三个钩子函数
+        beforeMount:function (){
+            //console.log('beforeMount:'+document.getElementById('span').innerText);
+        },
+        //vue生命周期第四个钩子函数
+        mounted:function (){
+            //console.log('mounted:'+document.getElementById('span').innerText);
+        },
+        //vue生命周期第五个钩子函数
+        beforeUpdate:function (){
+            //console.log('beforeUpdate:'+this.count);
+            //console.log('beforeUpdate:'+document.getElementById('span').innerText);
+        },
+        //vue生命周期第六个钩子函数
+        updated:function (){
+            console.log('beforeUpdate:'+this.count);
+            console.log('beforeUpdate:'+document.getElementById('span').innerText);
+        },
+        //vue生命周期第七个钩子函数
+        beforeDestroy:function (){
+
+        },
+        //vue生命周期第八个钩子函数
+        destroyed:function (){
+
+        },
+    })
+</script>
+
+</body>
+</html>

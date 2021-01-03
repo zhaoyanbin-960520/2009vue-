@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="app">
+    <!-- 全局组件   -->
+    <com></com>
+    <!--  局部组件  -->
+    <con></con>
+
+</div>
+
+<script src="js/vue.min.js"></script>
+<script>
+    //全局组件
+    let first={
+        template:`<div>这是我的first(0)组件</div>`
+    }
+
+    //局部组件
+    let second={
+        template:`<div>这是我的second组件</div>`
+    }
+
+    //全局组件注册  不推荐
+    Vue.component('com',first)
+
+    new Vue({
+        el: "#app",
+        data: {},
+        components:{
+            con:second
+        }
+
+    })
+</script>
+
+</body>
+</html>

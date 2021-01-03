@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <h2>系统欢迎页</h2>
+    <router-link to="/index">访问首页</router-link>
+    <router-link to="/user">用户管理</router-link>
+    <router-link to="/note">留言板</router-link>
+    <hr>
+
+    <!--展示路由  -->
+    <router-view></router-view>
+
+
+</div>
+
+<script src="js/vue.min.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+<script>
+
+    //准备组件
+    let index = {
+        template: `<div>
+<h3>这是index页面</h3>
+<h4>欢迎访问信息管理系统</h4>
+<img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2913259166,2454251380&fm=26&gp=0.jpg" alt="">
+</div>
+        `
+    }
+
+    let user = {
+        template: `
+          <div>
+          <h3>用户列表页</h3>
+          <table border="2">
+            <tr>
+              <td>ID</td>
+              <td>姓名</td>
+              <td>年龄</td>
+              <td>操作</td>
+            </tr>
+            <tr v-for="user in user_list" :key="user.id">
+              <td>{{ user.id }}</td>
+              <td>{{ user.name }}</td>
+              <td>{{ user.age }}</td>
+              <td><a href="">删除</a> | <a href="">修改</a></td>
+            </tr>
+          </table>
+          </div>
+        `,
+        data() {
+            return {
+                user_list: [
+                    {id: 1, name: "吉吉", age: 20},
+                    {id: 2, name: "光头强", age: 30},
+                    {id: 3, name: "熊大", age: 40},
+                    {id: 4, name: "熊二", age: 40},
+                ]
+            }
+        },
+    }
+
+    //定义路由映射
+    let myRouter = new VueRouter({
+        routes: [
+            {path: "/index", component: index},
+            {path: "/user", component: user},
+        ]
+    })
+
+
+    new Vue({
+        el: "#app",
+        data: {},
+        //注册路由
+        router: myRouter,
+    })
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="app">
+    <con></con>
+
+</div>
+
+<script src="js/vue.min.js"></script>
+<script>
+
+    let second = {
+        template: `
+          <div>这是我的分页组件
+          <div>我是嵌套div</div>
+          <h3>{{ count }}</h3>
+          <button @click="change">点我</button>
+          <h3>{{ title }}</h3>
+          </div>`,
+        data: function () {
+            return {
+                count: 51,
+                title: '111',
+            }
+        },
+        methods: {
+            change() {
+                this.count--;
+            },
+        },
+        created: function () {
+            //alert('123')
+            if (this.count >=50) {
+                this.title ='中老年'
+            } else {
+                this.title ='青装年'
+            }
+        },
+    }
+
+    Vue.component('con', second)
+    new Vue({
+        el: "#app",
+        data: {},
+    })
+</script>
+
+</body>
+</html>
